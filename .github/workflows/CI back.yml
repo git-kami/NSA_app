@@ -29,6 +29,15 @@ jobs:
         run: composer install
         working-directory: ./back
 
+      - name: Create .env from secrets
+        run: |
+          touch .env
+          echo "APP_NAME={{secret.APP_NAME}}" >> .env
+          echo "APP_ENV={{secret.APP_ENV}}" >> .env
+          echo "APP_KEY={{secret.APP_KEY}}" >> .env
+          echo "APP_DEBUG={{secret.APP_DEBUG}}" >> .env
+          echo "APP_URL={{secret.APP_URL}}" >> .env
+
       - name: Run PHPUnit tests
         run: vendor/bin/phpunit
         working-directory: ./back
