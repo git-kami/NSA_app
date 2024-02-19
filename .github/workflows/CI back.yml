@@ -21,6 +21,10 @@ jobs:
         with:
             php-version: '7.4'
 
+      - name: Update Composer
+        run: composer update
+        working-directory: ./back
+
       - name: Install dependencies
         run: composer install
         working-directory: ./back
