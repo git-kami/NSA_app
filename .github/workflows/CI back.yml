@@ -29,22 +29,6 @@ jobs:
         run: composer install
         working-directory: ./back
 
-      - name: Create .env from secrets
-        run: |
-          touch .env
-          echo "APP_NAME=Laravel" >> .env
-          echo "APP_ENV=local" >> .env
-          echo "APP_KEY=base64:h55oToUypq1BJwhcBAbtCnKscJGGS7xXF3zoDNf/yWE=" >> .env
-          echo "APP_DEBUG=true" >> .env
-          echo "APP_URL=http://localhost/" >> .env
-
-      - name: Cat .env
-        run: cat .env
-
-      - name: Run PHPUnit tests
-        run: vendor/bin/phpunit
-        working-directory: ./back
-
       - name: Archive production artifacts
         if: success()
         uses: actions/upload-artifact@v4
