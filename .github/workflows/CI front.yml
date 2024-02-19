@@ -20,7 +20,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 10.15
-          #cache: 'yarn'
 
       - name: Install dependencies with Yarn
         run: yarn install
@@ -38,11 +37,3 @@ jobs:
           path: |
             front
             !front/**/*.md
-
-      - name: Deploy frontend
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            ansible-playbook -i inventory.ini deploy.yml
