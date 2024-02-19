@@ -25,7 +25,12 @@ jobs:
         run: yarn install
         working-directory: ./front
 
+      - name: Launch Tests
+        run: yarn run test
+        working-directory: ./front
+
       - name: Build frontend with Yarn
+        if: success()
         run: yarn run build:prod
         working-directory: ./front
 
