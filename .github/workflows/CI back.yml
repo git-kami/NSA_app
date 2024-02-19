@@ -23,9 +23,11 @@ jobs:
 
       - name: Install dependencies
         run: composer install
+        working-directory: ./back
 
       - name: Run PHPUnit tests
         run: vendor/bin/phpunit
+        working-directory: ./back
 
       - name: Archive production artifacts
         if: success()
