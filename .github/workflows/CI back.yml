@@ -32,11 +32,11 @@ jobs:
       - name: Create .env from secrets
         run: |
           touch .env
-          echo "APP_NAME={{secrets.APP_NAME}}" >> .env
-          echo "APP_ENV={{secrets.APP_ENV}}" >> .env
-          echo "APP_KEY={{secrets.APP_KEY}}" >> .env
-          echo "APP_DEBUG={{secrets.APP_DEBUG}}" >> .env
-          echo "APP_URL={{secrets.APP_URL}}" >> .env
+          echo "APP_NAME=${{secrets.APP_NAME}}" >> .env
+          echo "APP_ENV=${{secrets.APP_ENV}}" >> .env
+          echo "APP_KEY=${{secrets.APP_KEY}}" >> .env
+          echo "APP_DEBUG=${{secrets.APP_DEBUG}}" >> .env
+          echo "APP_URL=${{secrets.APP_URL}}" >> .env
 
       - name: Run PHPUnit tests
         run: vendor/bin/phpunit
